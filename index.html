@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac AI Battle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h2 class="loading-text">TIC TAC AI BATTLE</h2>
+            <p>Initializing Neural Networks...</p>
+        </div>
+    </div>
+
+    <div class="main-container" id="gameBody" style="display:none;">
+        <h1 class="glow-text">TIC TAC AI BATTLE</h1>
+        
+        <div class="stats-grid">
+            <div class="stat-card p1"><span>PLAYER (X)</span><br><span id="scoreX">0</span></div>
+            <div class="stat-card ai"><span>SMART AI (O)</span><br><span id="scoreO">0</span></div>
+        </div>
+
+        <div id="status">Prepare for Battle!</div>
+
+        <div class="board" id="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <button id="restartBtn" class="main-btn">RESTART BATTLE</button>
+    </div>
+
+    <div id="winModal" class="modal">
+        <div class="modal-content">
+            <div class="icon" id="modalIcon">🏆</div>
+            <h2 id="winTitle">Result</h2>
+            <p id="winMessage"></p>
+            <button onclick="closeModal()" class="modal-btn">NEXT ROUND</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+﻿:root {
+    --bg: #050505;
+    --neon-cyan: #00f2ff;
+    --neon-magenta: #ff007f;
+    --purple: #7000ff;
+}
+
+body {
+    margin: 0; background: var(--bg); color: white;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex; justify-content: center; align-items: center; height: 100vh;
+    overflow: hidden;
+}
+
+/* Loading Screen Animation */
+#loader {
+    position: fixed; width: 100%; height: 100%; background: #000;
+    display: flex; justify-content: center; align-items: center; z-index: 9999;
+}
+
+.spinner {
+    width: 60px; height: 60px; border: 5px solid #222;
+    border-top: 5px solid var(--neon-cyan); border-radius: 50%;
+    animation: spin 1s linear infinite; margin: 0 auto 20px;
+}
+
+.loading-text { letter-spacing: 5px; animation: pulse 1.5s infinite; color: var(--neon-cyan); }
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* Game UI */
+.main-container {
+    background: #111; padding: 40px; border-radius: 25px;
+    text-align: center; border: 1px solid #333;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.glow-text {
+    font-size: 2.2rem; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-transform: uppercase; margin-bottom: 25px;
+}
+
+.stats-grid { display: flex; gap: 20px; justify-content: center; margin-bottom: 25px; }
+.stat-card { background: #1a1a1a; padding: 15px 25px; border-radius: 12px; min-width: 100px; border-bottom: 4px solid; }
+.stat-card.p1 { border-color: var(--neon-cyan); box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2); }
+.stat-card.ai { border-color: var(--neon-magenta); box-shadow: 0 5px 15px rgba(255, 0, 127, 0.2); }
+
+.board { display: grid; grid-template-columns: repeat(3, 100px); gap: 12px; margin: 20px auto; }
+.cell {
+    width: 100px; height: 100px; background: #222; border-radius: 15px;
+    font-size: 3.2rem; display: flex; justify-content: center; align-items: center;
+    cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #333;
+}
+.cell:hover { background: #2a2a2a; transform: scale(1.05); border-color: #555; }
+.cell.x { color: var(--neon-cyan); text-shadow: 0 0 15px var(--neon-cyan); }
+.cell.o { color: var(--neon-magenta); text-shadow: 0 0 15px var(--neon-magenta); }
+
+.main-btn {
+    background: linear-gradient(45deg, var(--purple), var(--neon-magenta));
+    border: none; padding: 15px 40px; color: white; border-radius: 50px;
+    font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 20px;
+    box-shadow: 0 5px 20px rgba(112, 0, 255, 0.4);
+}
+.main-btn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(112, 0, 255, 0.6); }
+
+/* Modal */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(8px); }
+.modal-content { background: #111; padding: 50px; border-radius: 30px; text-align: center; border: 2px solid var(--neon-cyan); transform: scale(0.7); animation: modalPop 0.4s forwards; }
+@keyframes modalPop { to { transform: scale(1); } }
+.modal-btn { background: var(--neon-cyan); border: none; padding: 12px 35px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+
